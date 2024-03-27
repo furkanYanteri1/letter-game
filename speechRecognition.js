@@ -32,25 +32,23 @@ export function handleRecognitionResult(e, targetLetter, spokenWordElement, succ
     // Show the word for 1 second before validation
     setTimeout(() => {
         if (text.charAt(0) === targetLetter) {
-            // Display success message
-            spokenWordElement.innerText = "Success! The word starts with the target letter.";
+            // Display success animation
             spokenWordElement.classList.add("success");
             if (typeof successCallback === 'function') {
                 successCallback();
             }
         } else {
-            // Display error message
-            spokenWordElement.innerText = "Error! The word does not start with the target letter.";
+            // Display failure animation
             spokenWordElement.classList.add("error");
             if (typeof errorCallback === 'function') {
                 errorCallback();
             }
         }
 
-        // Clear the spoken word after 2 seconds
+        // Clear the animations and spoken word after 2 seconds
         setTimeout(() => {
-            spokenWordElement.innerText = '';
             spokenWordElement.classList.remove("success", "error");
+            spokenWordElement.innerText = '';
         }, 2000); // 2 seconds
 
     }, 1000); // 1 second
@@ -65,13 +63,12 @@ export function stopSpeechRecognition(recognition) {
 
 // Function to handle recognition errors
 export function handleRecognitionError(e, spokenWordElement) {
-    // Display error message
-    spokenWordElement.innerText = "Recognition error: " + e.error;
+    // Display error animation
     spokenWordElement.classList.add("error");
 
-    // Clear the error message after 3 seconds
+    // Clear the error animation and spoken word after 3 seconds
     setTimeout(() => {
-        spokenWordElement.innerText = '';
         spokenWordElement.classList.remove("error");
+        spokenWordElement.innerText = '';
     }, 3000); // 3 seconds
 }
