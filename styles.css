@@ -16,9 +16,10 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    width: 80%;
+    height: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 5%;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
